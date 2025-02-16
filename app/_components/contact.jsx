@@ -25,7 +25,7 @@ const Contact = () => {
     console.log(name, email, phone, message);
 
 
-    // console.log("Form Submitted:", formData);
+    // console.log(formData);
     try{
         const resp = await db.insert(contacts)
         .values({
