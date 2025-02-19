@@ -41,10 +41,6 @@
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.97.3",
     "@react-three/fiber": "^8.15.16",
-    "@types/node": "20.6.2",
-    "@types/react": "18.2.22",
-    "@types/react-dom": "18.2.7",
-    "@types/three": "^0.161.2",
     "autoprefixer": "10.4.15",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -71,7 +67,6 @@
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.161.0",
-    "typescript": "5.2.2",
     "vaul": "^0.9.9",
     "zod": "^3.23.8"
   }

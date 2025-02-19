@@ -1,21 +1,18 @@
-"use client";
+"use client"
 
-import { useRef, useState } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useRef, useState } from "react"
+import { Canvas, useFrame } from "@react-three/fiber"
 import { 
   OrbitControls, 
   Sphere, 
-  MeshDistortMaterial, 
   Float, 
-  Environment,
-  useAspect 
-} from "@react-three/drei";
-import { useSpring, animated } from "@react-spring/three";
-import * as THREE from "three";
+  Environment 
+} from "@react-three/drei"
+import { useSpring, animated } from "@react-spring/three"
 
-function AnimatedSphere({ position, color, speed, distort, size }: any) {
-  const sphereRef = useRef<THREE.Mesh>();
-  const [hovered, setHovered] = useState(false);
+function AnimatedSphere({ position, color, speed, distort, size }) {
+  const sphereRef = useRef()
+  const [hovered, setHovered] = useState(false)
   
   const { scale, distortValue } = useSpring({
     scale: hovered ? 1.2 : 1,
@@ -25,16 +22,16 @@ function AnimatedSphere({ position, color, speed, distort, size }: any) {
       tension: 170,
       friction: 26
     }
-  });
+  })
 
   useFrame((state) => {
-    const time = state.clock.getElapsedTime() * speed;
+    const time = state.clock.getElapsedTime() * speed
     if (sphereRef.current) {
-      sphereRef.current.rotation.x = time * 0.1;
-      sphereRef.current.rotation.y = time * 0.15;
-      sphereRef.current.position.y = position[1] + Math.sin(time) * 0.1;
+      sphereRef.current.rotation.x = time * 0.1
+      sphereRef.current.rotation.y = time * 0.15
+      sphereRef.current.position.y = position[1] + Math.sin(time) * 0.1
     }
-  });
+  })
 
   return (
     <Float
@@ -63,18 +60,17 @@ function AnimatedSphere({ position, color, speed, distort, size }: any) {
         </Sphere>
       </animated.mesh>
     </Float>
-  );
+  )
 }
 
 function Background() {
-  const { viewport } = useThree();
   const spheres = [
     { position: [-2, 0, -5], color: "#ff6b6b", speed: 1, distort: 0.3, size: 1.2 },
     { position: [2, -1, -3], color: "#4ecdc4", speed: 0.8, distort: 0.4, size: 0.8 },
     { position: [-1, 2, -4], color: "#45b7d1", speed: 1.2, distort: 0.5, size: 1 },
     { position: [3, 1, -6], color: "#96ceb4", speed: 0.9, distort: 0.3, size: 1.5 },
     { position: [0, -2, -5], color: "#4d648d", speed: 1.1, distort: 0.4, size: 0.9 }
-  ];
+  ]
 
   return (
     <group>
@@ -82,7 +78,7 @@ function Background() {
         <AnimatedSphere key={index} {...sphere} />
       ))}
     </group>
-  );
+  )
 }
 
 export default function Scene() {
@@ -116,5 +112,5 @@ export default function Scene() {
 
       <fog attach="fog" args={['#000000', 5, 15]} />
     </Canvas>
-  );
+  )
 }
